@@ -1,8 +1,21 @@
 true = True
 false = False
 
+class Nation:
+    def __init__(self, name, gov, ruler, culture=None, faith=None):
+        self.name = name
+        self.gov = gov
+        self.ruler = ruler
+
+        self.jobs = {}
+        self.laws = {}
+        self.history = {}
+
+    def __str__(self):
+        return self.name
+
 class Person:
-    def __init__(self, name, house, age, isFem, culture, faith, title=[],dna=None, father=None, mother=None):
+    def __init__(self, name, house, age, isFem, culture, faith, dna=None, father=None, mother=None, title=[]):
         self.name = name
         self.house = house
         self.age = age
@@ -15,8 +28,10 @@ class Person:
         self.mother = mother
 
         self.location = 0
-        self.courtLoc = None
+        self.courtLoc = None 
         self.history = {}
+        self.traits = []
+        self.modifiers = []
         
 
         if self.isFem == False:
@@ -24,27 +39,21 @@ class Person:
         else:
             self.gen = "female"
     def __str__(self):
-        return 
+        return self.name + self.house
     
 class Culture:
-    def __init__(self,orgin,nation=""):
-        self.orgin = orgin
-        self.nation = nation
+    def __init__(self,name,herit):
+        self.name = name
+        self.herit = herit
     def __str__(self):
-        if self.nation=="":
-            return f"{self.orgin}"
-        else:
-            return f"{self.orgin} {self.nation}"
+        return self.name
     
 class Faith:
-    def __init__(self,rel,faith=""):
+    def __init__(self,name,rel):
+        self.name = name
         self.rel = rel
-        self.faith = faith
     def __str__(self):
-        if self.faith=="":
-            return f"{self.rel}"
-        else:
-            return f"{self.faith} {self.rel}"
+        return self.name
     
 
 germam = Culture("German","American")
